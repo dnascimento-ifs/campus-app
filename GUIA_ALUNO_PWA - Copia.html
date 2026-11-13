@@ -1,0 +1,1126 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia · App PWA Campus+</title><style>
+:root{--p:#0B8F4D;--s:#14365C;--ink:#1f2430;--muted:#5b6475;--line:#e3e6ee;--bg:#f6f7fb;--card:#fff;--code:#16202e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.capa{background:linear-gradient(135deg,var(--p),var(--s));color:#fff;padding:48px 16px 40px}
+.w{max-width:900px;margin:0 auto;padding:0 16px}.capa .w{padding:0}
+.capa small{opacity:.9;letter-spacing:1px;text-transform:uppercase;font-size:13px}
+.capa h1{font-size:clamp(26px,5vw,40px);line-height:1.15;margin:8px 0 10px}
+.capa p{max-width:700px;font-size:17px;opacity:.95}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:4px 12px;border-radius:20px;font-size:14px}
+nav.toc{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav.toc .w{display:flex;gap:4px;overflow-x:auto;padding:8px 16px}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:8px;font-size:14px}
+nav.toc a:hover{background:var(--bg);color:var(--ink)}
+section.parte{margin:36px auto}
+h2{font-size:25px;margin-bottom:6px}
+h2 .n{display:inline-block;background:var(--p);color:#fff;border-radius:8px;padding:0 10px;margin-right:8px;font-size:20px}
+.lead{color:var(--muted);margin-bottom:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.box ul{margin:6px 0 0 20px}
+.passo{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--p);border-radius:14px;padding:18px 20px;margin:16px 0}
+.passo.insere{border-left-color:#e08a00}
+.passo h3{font-size:19px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.passo h3 .num{background:var(--ink);color:#fff;border-radius:50%;min-width:32px;height:32px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.passo h3 label{margin-left:auto;font-size:13px;font-weight:normal;color:var(--muted);cursor:pointer;display:flex;gap:6px;align-items:center}
+.passo p{margin-top:8px}
+.arq{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--muted)}
+.insere .arq{color:#a35f00;background:#fff4e0;padding:4px 10px;border-radius:8px}
+.code{position:relative;margin-top:6px}
+pre{background:var(--code);color:#e6edf6;padding:16px;border-radius:10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:14px;line-height:1.55;white-space:pre}
+.copiar{position:absolute;top:8px;right:8px;background:#ffffff22;color:#fff;border:1px solid #ffffff44;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer}
+.confira{margin-top:12px;background:#ecfbf1;border:1px solid #bfe9cd;color:#17603a;border-radius:10px;padding:10px 14px;font-size:15px}
+code{background:#eef0f6;padding:1px 6px;border-radius:5px;font-family:Consolas,'Courier New',monospace;font-size:.92em}
+details.completo{margin:12px 0;background:var(--card);border:1px dashed var(--p);border-radius:12px;padding:12px 16px}
+details.completo summary{cursor:pointer;font-weight:600;color:var(--p)}
+.erro{border-left:4px solid #e0564a}.erro b{display:block;margin-bottom:4px}
+.msg pre{background:#fff;color:var(--ink);border:1px solid var(--line);white-space:pre-wrap}
+.check li{list-style:none;margin:6px 0}.check input{margin-right:8px;transform:scale(1.2)}
+.mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+.mapa div{background:var(--bg);border-radius:10px;padding:10px;font-size:14px}.mapa b{display:block;font-family:Consolas,monospace}
+a.btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:600;margin:8px 8px 0 0}
+footer.rod{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px 50px}
+@media print{nav.toc,.copiar,a.btn{display:none}.passo,.box{break-inside:avoid}pre{white-space:pre-wrap}body{background:#fff}}
+</style></head><body>
+<header class="capa"><div class="w"><small>Construção de Sites 1 · IFS Campus Tobias Barreto</small>
+<h1>📱 Campus+: do site ao app instalado no celular (PWA)</h1><p>Você vai criar o Campus+, um aplicativo do estudante feito só com HTML e CSS, transformá-lo em PWA (Progressive Web App) e publicá-lo no GitHub Pages. No final, quem abrir o link no celular recebe o convite para instalar, e o app ganha ícone na tela inicial e funciona até sem internet.</p>
+<div class="chips"><span>Nível: Intermediário</span><span>Tempo: 3 aulas (≈ 5h)</span><span>8 arquivos</span><span>Resultado: app instalado no celular</span></div></div></header>
+<nav class="toc"><div class="w"><a href="#p0">0 · Entender e preparar</a><a href="#p1">1 · HTML do app</a><a href="#p2">2 · CSS do app (mobile-first)</a><a href="#p3">3 · Ícones do app</a><a href="#p4">4 · Manifest</a><a href="#p5">5 · Service worker</a><a href="#p6">6 · Convite para instalar</a><a href="#p7">7 · Publicar no GitHub Pages</a><a href="#p8">8 · Instalar no celular e testar</a><a href="#p9">9 · Atualizar o app depois</a><a href="#arquivos">Arquivos</a><a href="#entrega">Entregar</a><a href="#erros">Deu erro?</a></div></nav>
+<main class="w">
+<section class="parte"><div class="box"><b>Nesta atividade você vai aprender:</b><ul><li>O que é um PWA e por que ele parece um aplicativo de verdade</li><li>Montar uma interface de app para celular (mobile-first) com barra de abas fixa</li><li>Trocar de tela só com CSS, usando :target e :has()</li><li>Criar o manifest.json: nome, cores e ícones do app</li><li>Criar um service worker para o app abrir sem internet</li><li>Mostrar o convite &quot;Instalar app&quot; (Android/computador) e o aviso do iPhone</li><li>Publicar no GitHub Pages, instalar no celular e testar offline</li></ul></div>
+<div class="box"><b>Os 8 arquivos do app e o papel de cada um</b><div class="mapa">
+<div><b>📄 index.html</b>a estrutura e o conteúdo das telas</div><div><b>🎨 style.css</b>o visual do app</div><div><b>🧾 manifest.json</b>a identidade: nome, cores, ícones</div><div><b>⚙️ sw.js</b>o ajudante offline (service worker)</div><div><b>🟨 app.js</b>registra o sw.js e mostra o convite de instalar</div>
+<div><b>🖼️ icon-192.png</b>ícone pequeno</div><div><b>🖼️ icon-512.png</b>ícone grande</div><div><b>🖼️ icon-maskable-512.png</b>ícone com margem (Android)</div></div>
+<a class="btn" href="app_pronto/index.html" target="_blank">Ver o app pronto</a><a class="btn" href="GERADOR_DE_ICONES.html" target="_blank">Abrir o Gerador de Ícones</a></div></section>
+<section class="parte" id="p0"><h2><span class="n">0</span>Entender e preparar</h2><p class="lead">Antes de digitar, entenda o que vamos construir e deixe a pasta pronta.</p><div class="passo"><h3><span class="num">1</span>O que é um PWA?<label><input type="checkbox"> feito</label></h3><p>PWA (Progressive Web App) é um <b>site que pode ser instalado como aplicativo</b>. Ele ganha ícone na tela inicial, abre em tela cheia (sem a barra do navegador) e pode funcionar sem internet. Não precisa da Play Store nem da App Store: o próprio navegador faz a instalação.<br><br>Para um site virar PWA, ele precisa de 3 coisas:<br>&bull; <b>HTTPS</b> (endereço seguro) &rarr; o GitHub Pages já dá isso de graça;<br>&bull; um <b>manifest.json</b> &rarr; a "carteira de identidade" do app (nome, cores, ícones);<br>&bull; um <b>service worker</b> (sw.js) &rarr; um ajudante que guarda os arquivos no celular para o app abrir offline.</p><div class="confira">✔ Confira: Você consegue explicar para um colega as 3 coisas que um PWA precisa.</div></div><div class="passo"><h3><span class="num">2</span>Criar a pasta e os arquivos<label><input type="checkbox"> feito</label></h3><p>Na Área de Trabalho, crie a pasta <code>campus-app</code> (minúsculo, sem espaço). Abra a pasta no VS Code (<b>File &rarr; Open Folder</b>). Por enquanto, crie só dois arquivos vazios: <code>index.html</code> e <code>style.css</code>. Os outros arquivos (app.js, manifest.json, sw.js e os ícones) vamos criar na hora certa.</p><div class="confira">✔ Confira: A pasta campus-app tem index.html e style.css.</div></div><div class="passo"><h3><span class="num">3</span>Como testar durante a atividade<label><input type="checkbox"> feito</label></h3><p>Nas <b>Partes 1 e 2</b> (HTML e CSS), abra o <code>index.html</code> com dois cliques e use <b>F5</b> depois de salvar. Deixe o navegador no <b>modo celular</b>: aperte <b>F12</b> e depois <b>Ctrl+Shift+M</b>, e escolha um celular, como o iPhone SE ou o Pixel 7.<br><br>A parte de PWA (service worker e instalação) <b>não funciona</b> com o arquivo aberto direto do computador (endereço começando com <code>file://</code>). Ela só funciona em HTTPS, por isso vamos testá-la depois de publicar no GitHub Pages.</p><div class="confira">✔ Confira: O index.html abre no navegador em modo celular (ainda em branco).</div></div></section><section class="parte" id="p1"><h2><span class="n">1</span>HTML do app</h2><p class="lead">O app tem um topo, quatro telas (Início, Horário, Cardápio e Perfil) e uma barra de abas embaixo, como os apps de celular. Digite cada bloco no final do index.html.</p><div class="passo"><h3><span class="num">4</span>Esqueleto do app<label><input type="checkbox"> feito</label></h3><p>A meta viewport com <code>viewport-fit=cover</code> deixa o app usar a tela inteira dos celulares com entalhe (notch). O resto é a base de sempre.</p><span class="arq">📄 index.html · digite no início do arquivo (ele está vazio)</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, viewport-fit=cover&quot;&gt;
+  &lt;title&gt;Campus+&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;</pre></div><div class="confira">✔ Confira: Abra no navegador: a aba mostra "Campus+".</div></div><div class="passo"><h3><span class="num">5</span>Topo do app<label><input type="checkbox"> feito</label></h3><p>O topo mostra a saudação e o nome do app. A <code>&lt;span class="selo-app"&gt;</code> só vai aparecer quando o app estiver <b>instalado</b>: o CSS vai saber disso sozinho. Troque SEU NOME pelo seu primeiro nome.</p><span class="arq">📄 index.html · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>  &lt;header class=&quot;topo&quot;&gt;
+    &lt;p class=&quot;ola&quot;&gt;Olá, SEU NOME 👋&lt;/p&gt;
+    &lt;h1&gt;Campus+ &lt;span class=&quot;selo-app&quot;&gt;modo app&lt;/span&gt;&lt;/h1&gt;
+  &lt;/header&gt;</pre></div><div class="confira">✔ Confira: F5. Aparecem "Olá, SEU NOME", o título Campus+ e o texto "modo app" (por enquanto ele aparece; o CSS vai escondê-lo).</div></div><div class="passo"><h3><span class="num">6</span>Tela Início<label><input type="checkbox"> feito</label></h3><p>Cada tela é uma <code>&lt;section class="tela"&gt;</code> com um <code>id</code>. O id é o "endereço" da tela: o link <code>href="#inicio"</code> da barra de abas vai abrir esta tela. Os avisos são <code>&lt;article&gt;</code>, porque cada um faz sentido sozinho.</p><span class="arq">📄 index.html · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>  &lt;main&gt;
+    &lt;section id=&quot;inicio&quot; class=&quot;tela&quot;&gt;
+      &lt;div class=&quot;card destaque&quot;&gt;
+        &lt;p class=&quot;rotulo&quot;&gt;Próxima aula&lt;/p&gt;
+        &lt;h2&gt;Construção de Sites&lt;/h2&gt;
+        &lt;p&gt;🕖 19h00 · Laboratório 2&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;h3 class=&quot;titulo-secao&quot;&gt;Avisos&lt;/h3&gt;
+      &lt;article class=&quot;card aviso&quot;&gt;
+        &lt;span class=&quot;etiqueta&quot;&gt;Hoje&lt;/span&gt;
+        &lt;h4&gt;Entrega do app PWA&lt;/h4&gt;
+        &lt;p&gt;Envie o link do GitHub Pages até as 22h.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;card aviso&quot;&gt;
+        &lt;span class=&quot;etiqueta azul&quot;&gt;Sexta&lt;/span&gt;
+        &lt;h4&gt;Semana de Ciência e Tecnologia&lt;/h4&gt;
+        &lt;p&gt;Inscrições abertas na coordenação.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;</pre></div><div class="confira">✔ Confira: F5. Aparecem o card da próxima aula e dois avisos.</div></div><div class="passo"><h3><span class="num">7</span>Tela Horário<label><input type="checkbox"> feito</label></h3><p>Cada dia é um <code>&lt;details&gt;</code>: uma caixa que abre e fecha sem JavaScript. O <code>&lt;summary&gt;</code> é o título que aparece fechado. O atributo <code>open</code> deixa a segunda-feira já aberta. Troque as matérias pelas suas.</p><span class="arq">📄 index.html · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>    &lt;section id=&quot;horario&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Horário da semana&lt;/h2&gt;
+      &lt;details class=&quot;dia&quot; open&gt;
+        &lt;summary&gt;Segunda&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Construção de Sites&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Banco de Dados&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Terça&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Engenharia de Software&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Inglês Técnico&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Quarta&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Redes de Computadores&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Construção de Sites&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Quinta&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Segurança da Informação&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Projeto Integrador&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/section&gt;</pre></div><div class="confira">✔ Confira: F5. Clique nos dias: as aulas aparecem e somem.</div></div><div class="passo"><h3><span class="num">8</span>Telas Cardápio e Perfil<label><input type="checkbox"> feito</label></h3><p>O cardápio são cinco cards, um por dia. O perfil é uma carteirinha de estudante. Repare que <code>&lt;/main&gt;</code> fecha aqui: as quatro telas ficam dentro do main.</p><span class="arq">📄 index.html · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>    &lt;section id=&quot;cardapio&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Cardápio da semana&lt;/h2&gt;
+      &lt;div class=&quot;grade-cardapio&quot;&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍛&lt;/span&gt;&lt;h4&gt;Seg&lt;/h4&gt;&lt;p&gt;Arroz, feijão e frango&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍝&lt;/span&gt;&lt;h4&gt;Ter&lt;/h4&gt;&lt;p&gt;Macarrão à bolonhesa&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🥘&lt;/span&gt;&lt;h4&gt;Qua&lt;/h4&gt;&lt;p&gt;Cuscuz com ovo&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍲&lt;/span&gt;&lt;h4&gt;Qui&lt;/h4&gt;&lt;p&gt;Sopa de legumes&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍔&lt;/span&gt;&lt;h4&gt;Sex&lt;/h4&gt;&lt;p&gt;Hambúrguer caseiro&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;perfil&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Meu cartão&lt;/h2&gt;
+      &lt;div class=&quot;carteirinha&quot;&gt;
+        &lt;div class=&quot;foto&quot;&gt;🧑‍🎓&lt;/div&gt;
+        &lt;h3&gt;SEU NOME&lt;/h3&gt;
+        &lt;p&gt;Técnico em Informática&lt;/p&gt;
+        &lt;p class=&quot;matricula&quot;&gt;Matrícula 2026.0001&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;</pre></div><div class="confira">✔ Confira: F5. Aparecem os pratos da semana e a carteirinha.</div></div><div class="passo"><h3><span class="num">9</span>Barra de abas e fechamento<label><input type="checkbox"> feito</label></h3><p>A <code>&lt;nav class="abas"&gt;</code> é a barra de baixo, igual à dos apps. Cada link aponta para o id de uma tela. Depois fechamos o body e o html.</p><span class="arq">📄 index.html · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>  &lt;nav class=&quot;abas&quot;&gt;
+    &lt;a href=&quot;#inicio&quot;&gt;&lt;span&gt;🏠&lt;/span&gt;Início&lt;/a&gt;
+    &lt;a href=&quot;#horario&quot;&gt;&lt;span&gt;🗓️&lt;/span&gt;Horário&lt;/a&gt;
+    &lt;a href=&quot;#cardapio&quot;&gt;&lt;span&gt;🍽️&lt;/span&gt;Cardápio&lt;/a&gt;
+    &lt;a href=&quot;#perfil&quot;&gt;&lt;span&gt;👤&lt;/span&gt;Perfil&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div><div class="confira">✔ Confira: F5. Tudo aparece em sequência, sem estilo. Clique nas abas: a página rola até a tela certa. O CSS vai transformar isso em telas separadas.</div></div></section><section class="parte" id="p2"><h2><span class="n">2</span>CSS do app (mobile-first)</h2><p class="lead">Mobile-first quer dizer: primeiro deixamos lindo no celular. No computador, o app fica centralizado com a largura de um celular. Digite cada bloco no final do style.css.</p><div class="passo"><h3><span class="num">10</span>Cores, reset e largura de celular<label><input type="checkbox"> feito</label></h3><p>As variáveis guardam as cores do app. <code>max-width: 480px</code> com <code>margin: 0 auto</code> faz o app ter a largura de um celular, mesmo no computador. O <code>padding-bottom</code> grande deixa espaço para a barra de abas, que vai ficar fixa embaixo.</p><span class="arq">🎨 style.css · digite no início do arquivo (ele está vazio)</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>:root {
+  --verde: #0B8F4D;
+  --verde-escuro: #076b39;
+  --azul: #14365C;
+  --amarelo: #FFC93C;
+  --fundo: #f4f6fb;
+  --texto: #1d2433;
+  --cinza: #6b7385;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: &#x27;Segoe UI&#x27;, Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 90px;
+}</pre></div><div class="confira">✔ Confira: F5. Fundo cinza-claro e conteúdo estreito e centralizado.</div></div><div class="passo"><h3><span class="num">11</span>Topo grudado<label><input type="checkbox"> feito</label></h3><p><code>position: sticky</code> deixa o topo grudado em cima. <code>env(safe-area-inset-top)</code> é o tamanho do entalhe (notch) do celular: somamos esse valor ao espaço de cima para o texto não ficar escondido atrás da câmera. A <code>.selo-app</code> começa escondida com <code>display: none</code>.</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+  color: white;
+  padding: calc(16px + env(safe-area-inset-top)) 20px 18px;
+  border-radius: 0 0 22px 22px;
+}
+
+.ola {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.topo h1 {
+  font-size: 1.7rem;
+}
+
+.selo-app {
+  display: none;
+  font-size: 0.7rem;
+  background: var(--amarelo);
+  color: var(--texto);
+  padding: 2px 8px;
+  border-radius: 20px;
+  vertical-align: middle;
+}</pre></div><div class="confira">✔ Confira: O topo fica verde, com cantos arredondados embaixo, e o texto "modo app" some.</div></div><div class="passo"><h3><span class="num">12</span>Trocar de tela só com CSS<label><input type="checkbox"> feito</label></h3><p>Este é o truque principal. Todas as telas começam escondidas (<code>display: none</code>). <code>.tela:target</code> mostra a tela cujo id está no endereço: clicou em <code>#horario</code>, aparece a tela Horário.<br><br>Mas quando o app abre, o endereço não tem # nenhum. Por isso a terceira regra diz: se o <code>main</code> <b>não tem</b> (<code>:not(:has(...))</code>) nenhuma tela escolhida, mostre a tela Início.</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.tela {
+  display: none;
+  padding: 20px;
+  scroll-margin-top: 140px;
+}
+
+.tela:target {
+  display: block;
+}
+
+main:not(:has(.tela:target)) #inicio {
+  display: block;
+}
+
+.titulo-tela {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.titulo-secao {
+  margin: 24px 0 12px;
+  color: var(--cinza);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}</pre></div><div class="confira">✔ Confira: Só a tela Início aparece. Clique em Horário: a tela troca!</div></div><div class="passo"><h3><span class="num">13</span>Cards da tela Início<label><input type="checkbox"> feito</label></h3><p>O <code>.card</code> é a base de todos os cartões. Com a classe extra <code>.destaque</code>, ele vira o cartão azul da próxima aula. A <code>.etiqueta</code> é a pílula colorida dos avisos.</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(20, 54, 92, 0.08);
+}
+
+.destaque {
+  background: var(--azul);
+  color: white;
+}
+
+.destaque h2 {
+  font-size: 1.4rem;
+  margin: 4px 0;
+}
+
+.rotulo {
+  color: var(--amarelo);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aviso {
+  margin-bottom: 12px;
+}
+
+.aviso p {
+  color: var(--cinza);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--verde);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.etiqueta.azul {
+  background: var(--azul);
+}</pre></div><div class="confira">✔ Confira: A próxima aula fica num cartão azul e os avisos em cartões brancos com etiquetas.</div></div><div class="passo"><h3><span class="num">14</span>Horário (caixas que abrem)<label><input type="checkbox"> feito</label></h3><p><code>summary::after</code> coloca um sinal de + no fim de cada dia. <code>.dia[open] summary::after</code> troca o + por &minus; quando a caixa está aberta. <code>list-style: none</code> e <code>::-webkit-details-marker</code> tiram a setinha padrão do navegador.</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.dia {
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+}
+
+.dia summary {
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dia summary::-webkit-details-marker {
+  display: none;
+}
+
+.dia summary::after {
+  content: &quot;+&quot;;
+  color: var(--verde);
+  font-size: 1.2rem;
+}
+
+.dia[open] summary::after {
+  content: &quot;−&quot;;
+}
+
+.dia ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.dia li {
+  padding: 6px 0;
+  border-top: 1px solid var(--fundo);
+}
+
+.dia b {
+  color: var(--verde);
+  margin-right: 8px;
+}</pre></div><div class="confira">✔ Confira: Na tela Horário, os dias viram cartões com + e &minus;.</div></div><div class="passo"><h3><span class="num">15</span>Cardápio em grade e carteirinha<label><input type="checkbox"> feito</label></h3><p><code>repeat(2, 1fr)</code> faz uma grade com 2 colunas, boa para tela de celular. A carteirinha usa um gradiente e um círculo (<code>border-radius: 50%</code>) para a foto.</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.grade-cardapio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.prato {
+  text-align: center;
+}
+
+.prato span {
+  font-size: 2.2rem;
+}
+
+.prato p {
+  color: var(--cinza);
+  font-size: 0.9rem;
+}
+
+.carteirinha {
+  background: linear-gradient(135deg, var(--verde), var(--azul));
+  color: white;
+  border-radius: 22px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.foto {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: white;
+  font-size: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matricula {
+  margin-top: 10px;
+  font-family: &#x27;Courier New&#x27;, monospace;
+  opacity: 0.85;
+}</pre></div><div class="confira">✔ Confira: Cardápio em 2 colunas e carteirinha verde com a foto redonda.</div></div><div class="passo"><h3><span class="num">16</span>Barra de abas fixa<label><input type="checkbox"> feito</label></h3><p><code>position: fixed</code> com <code>bottom: 0</code> prende a barra embaixo da tela. <code>left: 50%</code> com <code>translateX(-50%)</code> centraliza a barra quando o app está no computador. <code>env(safe-area-inset-bottom)</code> respeita a barrinha de gestos do iPhone.<br><br>As duas últimas regras pintam de verde a aba da tela aberta: "se o body tem a tela Horário escolhida, pinte o link que aponta para #horario".</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.abas {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  background: white;
+  border-top: 1px solid #e3e6ee;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.abas a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: var(--cinza);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.abas span {
+  display: block;
+  font-size: 1.4rem;
+}
+
+body:has(#inicio:target) .abas a[href=&quot;#inicio&quot;],
+body:has(#horario:target) .abas a[href=&quot;#horario&quot;],
+body:has(#cardapio:target) .abas a[href=&quot;#cardapio&quot;],
+body:has(#perfil:target) .abas a[href=&quot;#perfil&quot;],
+body:not(:has(.tela:target)) .abas a[href=&quot;#inicio&quot;] {
+  color: var(--verde);
+  font-weight: bold;
+}</pre></div><div class="confira">✔ Confira: A barra fica fixa embaixo, e a aba da tela aberta fica verde.</div></div></section><section class="parte" id="p3"><h2><span class="n">3</span>Ícones do app</h2><p class="lead">Todo app precisa de ícone. O PWA pede pelo menos dois tamanhos: 192×192 e 512×512 pixels, em PNG.</p><div class="passo"><h3><span class="num">17</span>Gerar os ícones<label><input type="checkbox"> feito</label></h3><p>Abra o arquivo <b>GERADOR_DE_ICONES.html</b> (ele vem junto com este guia; peça ao professor se não tiver). Escolha um emoji e as cores e clique nos três botões de download. Os arquivos já saem com o nome certo:<br>&bull; <code>icon-192.png</code> (ícone pequeno)<br>&bull; <code>icon-512.png</code> (ícone grande, usado na tela de abertura)<br>&bull; <code>icon-maskable-512.png</code> (versão com margem, que o Android recorta em círculo ou gota)</p><div class="confira">✔ Confira: Você tem os 3 arquivos PNG baixados.</div></div><div class="passo"><h3><span class="num">18</span>Colocar os ícones na pasta<label><input type="checkbox"> feito</label></h3><p>Mova os 3 arquivos da pasta Downloads para a pasta <code>campus-app</code>, <b>soltos</b>, junto do index.html (não crie subpasta). Confira se os nomes estão exatamente iguais, tudo minúsculo. Se o navegador colocou "(1)" no nome, renomeie.</p><div class="confira">✔ Confira: A pasta tem: index.html, style.css, icon-192.png, icon-512.png e icon-maskable-512.png.</div></div></section><section class="parte" id="p4"><h2><span class="n">4</span>Manifest: a identidade do app</h2><p class="lead">O manifest.json diz ao celular o nome do app, as cores e onde estão os ícones. Ele é escrito em JSON, um formato de dados com regras rígidas.</p><div class="passo"><h3><span class="num">19</span>Criar o manifest.json<label><input type="checkbox"> feito</label></h3><p>Crie o arquivo <code>manifest.json</code> e digite o bloco abaixo. O que cada campo faz:<br>&bull; <b>name</b>: nome completo, aparece na tela de abertura; <b>short_name</b>: nome curto, aparece embaixo do ícone;<br>&bull; <b>start_url</b> e <b>scope</b>: <code>"./"</code> quer dizer "esta pasta". <b>Use sempre ./ e nunca /</b>: no GitHub Pages o site fica numa subpasta (/campus-app/), e uma barra sozinha apontaria para o lugar errado;<br>&bull; <b>display: standalone</b>: abre sem a barra do navegador, como um app;<br>&bull; <b>theme_color</b>: cor da barra de status; <b>background_color</b>: cor da tela de abertura;<br>&bull; <b>icons</b>: a lista dos ícones da Parte 3.<br><br><b>Cuidado com o JSON:</b> textos entre aspas duplas, vírgula entre os itens e <b>nenhuma vírgula depois do último item</b> de uma lista.</p><span class="arq">🧾 manifest.json · crie o arquivo e digite (ele está vazio)</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>{
+  &quot;name&quot;: &quot;Campus+ · App do Estudante&quot;,
+  &quot;short_name&quot;: &quot;Campus+&quot;,
+  &quot;description&quot;: &quot;Horário, avisos e cardápio do campus no seu celular.&quot;,
+  &quot;start_url&quot;: &quot;./&quot;,
+  &quot;scope&quot;: &quot;./&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;orientation&quot;: &quot;portrait&quot;,
+  &quot;background_color&quot;: &quot;#f4f6fb&quot;,
+  &quot;theme_color&quot;: &quot;#0B8F4D&quot;,
+  &quot;lang&quot;: &quot;pt-BR&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon-192.png&quot;,
+      &quot;sizes&quot;: &quot;192x192&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon-512.png&quot;,
+      &quot;sizes&quot;: &quot;512x512&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon-maskable-512.png&quot;,
+      &quot;sizes&quot;: &quot;512x512&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;purpose&quot;: &quot;maskable&quot;
+    }
+  ]
+}</pre></div><div class="confira">✔ Confira: O arquivo está salvo. No VS Code, nenhuma linha aparece sublinhada em vermelho (se aparecer, é vírgula ou aspas).</div></div><div class="passo insere"><h3><span class="num">20</span>Ligar o manifest no HTML<label><input type="checkbox"> feito</label></h3><p>Agora o HTML precisa avisar que o manifest existe. <b>Atenção: este bloco NÃO vai no final do arquivo.</b> Volte ao index.html e cole logo abaixo da linha <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>, dentro do <code>&lt;head&gt;</code>.<br>&bull; <b>manifest</b>: liga o manifest.json;<br>&bull; <b>theme-color</b>: pinta a barra do navegador de verde;<br>&bull; <b>icon</b>: ícone da aba do navegador;<br>&bull; <b>apple-touch-icon</b> e <b>apple-mobile-web-app-title</b>: o iPhone ainda usa estas tags para o ícone e o nome na tela inicial.</p><span class="arq">📄 index.html · cole logo ABAIXO da linha  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>  &lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
+  &lt;meta name=&quot;theme-color&quot; content=&quot;#0B8F4D&quot;&gt;
+  &lt;link rel=&quot;icon&quot; href=&quot;icon-192.png&quot;&gt;
+  &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;icon-192.png&quot;&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;Campus+&quot;&gt;</pre></div><div class="confira">✔ Confira: F5. A aba do navegador mostra o seu ícone.</div></div></section><section class="parte" id="p5"><h2><span class="n">5</span>Service worker: o app funcionando offline</h2><p class="lead">O service worker é um arquivo JavaScript que o navegador deixa rodando em segundo plano. Ele fica entre o app e a internet: guarda uma cópia dos arquivos e, sem conexão, entrega essa cópia. O Chrome só oferece a instalação se o site tiver um service worker com o evento fetch.</p><div class="passo"><h3><span class="num">21</span>Lista de arquivos guardados<label><input type="checkbox"> feito</label></h3><p>Crie o arquivo <code>sw.js</code>. <code>VERSAO</code> é o nome da "caixa" (cache) onde os arquivos ficam guardados. <code>ARQUIVOS</code> é a lista do que vai para a caixa. <b>Todos os nomes da lista precisam existir na pasta</b>: se um estiver errado, o service worker inteiro falha.</p><span class="arq">⚙️ sw.js · crie o arquivo e digite (ele está vazio)</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// Nome da caixa (cache). Mude o número quando atualizar o app: v1, v2, v3...
+const VERSAO = &#x27;campus-v1&#x27;;
+
+// Arquivos guardados no celular para o app abrir sem internet
+const ARQUIVOS = [
+  &#x27;./&#x27;,
+  &#x27;./index.html&#x27;,
+  &#x27;./style.css&#x27;,
+  &#x27;./app.js&#x27;,
+  &#x27;./manifest.json&#x27;,
+  &#x27;./icon-192.png&#x27;,
+  &#x27;./icon-512.png&#x27;
+];</pre></div><div class="confira">✔ Confira: O sw.js tem a versão e a lista com 7 itens.</div></div><div class="passo"><h3><span class="num">22</span>Evento install: guardar os arquivos<label><input type="checkbox"> feito</label></h3><p>O evento <code>install</code> acontece uma vez, quando o service worker é instalado. Ele abre a caixa e guarda todos os arquivos da lista (<code>cache.addAll</code>). <code>skipWaiting()</code> faz a versão nova começar a valer logo, sem esperar o app ser fechado.</p><span class="arq">⚙️ sw.js · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// 1. INSTALAÇÃO: baixa e guarda os arquivos da lista
+self.addEventListener(&#x27;install&#x27;, (evento) =&gt; {
+  evento.waitUntil(
+    caches.open(VERSAO).then((cache) =&gt; cache.addAll(ARQUIVOS))
+  );
+  self.skipWaiting();
+});</pre></div><div class="confira">✔ Confira: Arquivo salvo.</div></div><div class="passo"><h3><span class="num">23</span>Evento activate: jogar fora a versão velha<label><input type="checkbox"> feito</label></h3><p>Quando uma versão nova assume (<code>activate</code>), apagamos as caixas com nomes diferentes da VERSAO atual. Assim o celular não acumula cópias antigas. <code>clients.claim()</code> faz o service worker assumir as telas já abertas.</p><span class="arq">⚙️ sw.js · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// 2. ATIVAÇÃO: apaga as caixas de versões antigas
+self.addEventListener(&#x27;activate&#x27;, (evento) =&gt; {
+  evento.waitUntil(
+    caches.keys().then((nomes) =&gt;
+      Promise.all(
+        nomes.filter((nome) =&gt; nome !== VERSAO).map((nome) =&gt; caches.delete(nome))
+      )
+    )
+  );
+  self.clients.claim();
+});</pre></div><div class="confira">✔ Confira: Arquivo salvo.</div></div><div class="passo"><h3><span class="num">24</span>Evento fetch: internet primeiro, cópia se cair<label><input type="checkbox"> feito</label></h3><p>Toda vez que o app pede um arquivo, o evento <code>fetch</code> é chamado. Nossa estratégia é <b>internet primeiro</b>:<br>&bull; <b>com internet</b>: busca a versão mais nova (<code>fetch</code>), guarda uma cópia na caixa e entrega;<br>&bull; <b>sem internet</b>: cai no <code>.catch</code> e entrega a cópia guardada (<code>caches.match</code>).<br>As duas primeiras linhas ignoram pedidos que não são leitura (GET) e pedidos para outros sites.</p><span class="arq">⚙️ sw.js · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// 3. BUSCA: tenta a internet; se não conseguir, usa a cópia guardada
+self.addEventListener(&#x27;fetch&#x27;, (evento) =&gt; {
+  if (evento.request.method !== &#x27;GET&#x27;) return;
+  if (!evento.request.url.startsWith(self.location.origin)) return;
+
+  evento.respondWith(
+    fetch(evento.request)
+      .then((resposta) =&gt; {
+        const copia = resposta.clone();
+        caches.open(VERSAO).then((cache) =&gt; cache.put(evento.request, copia));
+        return resposta;
+      })
+      .catch(() =&gt; caches.match(evento.request))
+  );
+});</pre></div><div class="confira">✔ Confira: O sw.js está completo, com os três eventos: install, activate e fetch.</div></div></section><section class="parte" id="p6"><h2><span class="n">6</span>Convite para instalar</h2><p class="lead">Vamos fazer o app pedir para ser instalado. No Android e no computador, o Chrome avisa quando o app pode ser instalado (evento beforeinstallprompt), e nós mostramos um convite bonito. No iPhone esse evento não existe, então mostramos uma instrução.</p><div class="passo insere"><h3><span class="num">25</span>Caixas do convite no HTML<label><input type="checkbox"> feito</label></h3><p><b>Atenção: este bloco NÃO vai no final do arquivo.</b> Cole logo <b>acima</b> da linha <code>&lt;/body&gt;</code>. São duas caixas que começam escondidas (atributo <code>hidden</code>): o convite (Android/computador) e o aviso do iPhone. A última linha liga o arquivo <code>app.js</code>, que vamos criar a seguir.</p><span class="arq">📄 index.html · cole logo ACIMA da linha  &lt;/body&gt;</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>  &lt;div id=&quot;convite&quot; class=&quot;convite&quot; hidden&gt;
+    &lt;p&gt;&lt;b&gt;📲 Instale o Campus+&lt;/b&gt;&lt;br&gt;Abra direto da tela inicial, até sem internet.&lt;/p&gt;
+    &lt;button id=&quot;botao-instalar&quot;&gt;Instalar&lt;/button&gt;
+    &lt;button id=&quot;botao-depois&quot; class=&quot;secundario&quot;&gt;Agora não&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;aviso-ios&quot; class=&quot;convite&quot; hidden&gt;
+    &lt;p&gt;&lt;b&gt;📲 Instale no iPhone:&lt;/b&gt; toque em &lt;b&gt;Compartilhar&lt;/b&gt; (quadrado com seta ⬆️) e depois em &lt;b&gt;Adicionar à Tela de Início&lt;/b&gt;.&lt;/p&gt;
+    &lt;button id=&quot;botao-fechar-ios&quot; class=&quot;secundario&quot;&gt;Entendi&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;</pre></div><div class="confira">✔ Confira: F5. Nada muda na tela (as caixas estão escondidas). Isso é o esperado.</div></div><div class="passo"><h3><span class="num">26</span>Visual do convite e do modo app<label><input type="checkbox"> feito</label></h3><p>No final do style.css. O convite flutua acima da barra de abas. A regra <code>.convite[hidden]</code> é importante: sem ela, o <code>display: flex</code> passaria por cima do <code>hidden</code> e o convite nunca sumiria.<br><br><code>@media (display-mode: standalone)</code> só vale quando o app está <b>instalado</b>. Ali mostramos o selo "modo app" no topo. É a prova visual de que a instalação funcionou!</p><span class="arq">🎨 style.css · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>.convite {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(80px + env(safe-area-inset-bottom));
+  width: calc(100% - 24px);
+  max-width: 456px;
+  background: var(--azul);
+  color: white;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
+.convite[hidden] {
+  display: none;
+}
+
+.convite p {
+  flex: 1 1 100%;
+}
+
+.convite button {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--amarelo);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.convite button.secundario {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (display-mode: standalone) {
+  .selo-app {
+    display: inline-block;
+  }
+}</pre></div><div class="confira">✔ Confira: Arquivo salvo. (O convite só aparece depois de publicar.)</div></div><div class="passo"><h3><span class="num">27</span>Registrar o service worker<label><input type="checkbox"> feito</label></h3><p>Crie o arquivo <code>app.js</code>. Este bloco diz ao navegador: "use o sw.js como service worker deste app". O <code>if</code> confere se o navegador suporta service worker. O caminho <code>./sw.js</code> começa com ponto pelo mesmo motivo do manifest: o site fica numa subpasta do GitHub Pages.</p><span class="arq">🟨 app.js · crie o arquivo e digite (ele está vazio)</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// ===== 1. Registrar o service worker =====
+if (&#x27;serviceWorker&#x27; in navigator) {
+  window.addEventListener(&#x27;load&#x27;, () =&gt; {
+    navigator.serviceWorker.register(&#x27;./sw.js&#x27;)
+      .then(() =&gt; console.log(&#x27;✅ Service worker registrado&#x27;))
+      .catch((erro) =&gt; console.log(&#x27;❌ Erro no service worker:&#x27;, erro));
+  });
+}</pre></div><div class="confira">✔ Confira: Arquivo salvo.</div></div><div class="passo"><h3><span class="num">28</span>Mostrar o convite (Android e computador)<label><input type="checkbox"> feito</label></h3><p>Quando o Chrome decide que o app pode ser instalado, ele dispara <code>beforeinstallprompt</code>. Nós guardamos esse evento (<code>pedidoInstalacao</code>) e mostramos o nosso convite. Quando a pessoa toca em Instalar, chamamos <code>prompt()</code>, que abre a janela oficial de instalação do celular. O evento <code>appinstalled</code> avisa que deu certo.</p><span class="arq">🟨 app.js · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// ===== 2. Convite de instalação (Android e computador) =====
+let pedidoInstalacao = null;
+const convite = document.querySelector(&#x27;#convite&#x27;);
+
+window.addEventListener(&#x27;beforeinstallprompt&#x27;, (evento) =&gt; {
+  evento.preventDefault();
+  pedidoInstalacao = evento;
+  convite.hidden = false;
+});
+
+document.querySelector(&#x27;#botao-instalar&#x27;).addEventListener(&#x27;click&#x27;, async () =&gt; {
+  convite.hidden = true;
+  if (!pedidoInstalacao) return;
+  pedidoInstalacao.prompt();
+  const escolha = await pedidoInstalacao.userChoice;
+  console.log(&#x27;Resposta:&#x27;, escolha.outcome);
+  pedidoInstalacao = null;
+});
+
+document.querySelector(&#x27;#botao-depois&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  convite.hidden = true;
+});
+
+window.addEventListener(&#x27;appinstalled&#x27;, () =&gt; {
+  convite.hidden = true;
+  console.log(&#x27;🎉 App instalado!&#x27;);
+});</pre></div><div class="confira">✔ Confira: Arquivo salvo.</div></div><div class="passo"><h3><span class="num">29</span>Aviso para iPhone<label><input type="checkbox"> feito</label></h3><p>O iPhone não tem o evento de instalação, então detectamos se é um aparelho Apple (<code>iphone|ipad|ipod</code>) e se o app ainda <b>não</b> está instalado (<code>display-mode: standalone</code>). Se for o caso, mostramos a instrução com o caminho manual.</p><span class="arq">🟨 app.js · digite no final do arquivo</span><div class="code"><button class="copiar" type="button">Copiar</button><pre>// ===== 3. Aviso para iPhone e iPad =====
+const ehIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const jaInstalado = window.matchMedia(&#x27;(display-mode: standalone)&#x27;).matches || navigator.standalone === true;
+const avisoIOS = document.querySelector(&#x27;#aviso-ios&#x27;);
+
+if (ehIOS &amp;&amp; !jaInstalado) {
+  avisoIOS.hidden = false;
+}
+
+document.querySelector(&#x27;#botao-fechar-ios&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  avisoIOS.hidden = true;
+});</pre></div><div class="confira">✔ Confira: O app.js está completo, com 3 partes. Seu app tem agora 8 arquivos na pasta.</div></div></section><section class="parte" id="p7"><h2><span class="n">7</span>Publicar no GitHub Pages</h2><p class="lead">O PWA só funciona em HTTPS. O GitHub Pages publica o site em HTTPS, de graça e sem instalar nada.</p><div class="passo"><h3><span class="num">30</span>Conferir a pasta antes de enviar<label><input type="checkbox"> feito</label></h3><p>A pasta <code>campus-app</code> precisa ter exatamente estes <b>8 arquivos</b>, soltos (sem subpastas):<br><code>index.html</code> &middot; <code>style.css</code> &middot; <code>app.js</code> &middot; <code>manifest.json</code> &middot; <code>sw.js</code> &middot; <code>icon-192.png</code> &middot; <code>icon-512.png</code> &middot; <code>icon-maskable-512.png</code></p><div class="confira">✔ Confira: São 8 arquivos, todos com nomes minúsculos e sem .txt no final.</div></div><div class="passo"><h3><span class="num">31</span>Criar o repositório<label><input type="checkbox"> feito</label></h3><p>Entre em <b>github.com</b> (crie a conta em <b>Sign up</b>, se ainda não tiver). Clique no <b>+</b> no canto superior direito &rarr; <b>New repository</b>.<br>&bull; <b>Repository name:</b> <code>campus-app</code><br>&bull; Marque <b>Public</b> (público)<br>&bull; Clique em <b>Create repository</b>.</p><div class="confira">✔ Confira: Abre a página do repositório vazio (Quick setup).</div></div><div class="passo"><h3><span class="num">32</span>Enviar os 8 arquivos<label><input type="checkbox"> feito</label></h3><p>Clique em <b>uploading an existing file</b> (ou em <b>Add file &rarr; Upload files</b>). Selecione os <b>8 arquivos</b> na pasta (Ctrl+A) e arraste para o navegador. Arraste os arquivos, e não a pasta. Espere todos carregarem e clique em <b>Commit changes</b>.</p><div class="confira">✔ Confira: O repositório lista os 8 arquivos.</div></div><div class="passo"><h3><span class="num">33</span>Ligar o GitHub Pages<label><input type="checkbox"> feito</label></h3><p>No repositório: <b>Settings</b> &rarr; <b>Pages</b> (menu da esquerda) &rarr; em <b>Source</b>, deixe <b>Deploy from a branch</b> &rarr; em <b>Branch</b>, escolha <b>main</b> e <b>/ (root)</b> &rarr; <b>Save</b>. Espere de 1 a 3 minutos e atualize a página até aparecer <b>Your site is live at</b>. O seu link será:<br><code>https://SEU-USUARIO.github.io/campus-app/</code></p><div class="confira">✔ Confira: O link abre o Campus+ no computador, com o ícone na aba do navegador.</div></div></section><section class="parte" id="p8"><h2><span class="n">8</span>Instalar no celular e testar</h2><p class="lead">Agora é a hora de ver o site virar app. Teste primeiro no computador (para achar erros) e depois no celular.</p><div class="passo"><h3><span class="num">34</span>Raio-X no computador (Chrome ou Edge)<label><input type="checkbox"> feito</label></h3><p>Abra o seu link e aperte <b>F12</b> &rarr; aba <b>Application</b> (Aplicativo). Se não aparecer, clique em <b>&raquo;</b>.<br>&bull; Em <b>Manifest</b>: devem aparecer o nome, as cores e os 3 ícones. Na seção <b>Installability</b> (Instalabilidade), <b>não pode haver erros</b>.<br>&bull; Em <b>Service workers</b>: o sw.js deve estar <b>activated and is running</b> (ativado e rodando).<br>&bull; Na aba <b>Console</b>: deve aparecer ✅ Service worker registrado.<br><br>Com tudo certo, aparece um ícone de instalar na barra de endereço do Chrome. Você já pode instalar no computador!</p><div class="confira">✔ Confira: O Manifest não mostra erros e o service worker está ativo.</div></div><div class="passo"><h3><span class="num">35</span>Instalar no Android<label><input type="checkbox"> feito</label></h3><p>No celular, abra o link no <b>Google Chrome</b>. <b>Toque na página e navegue pelas abas por uns 30 segundos</b>: o Chrome só oferece a instalação depois que a pessoa interage com o site. O convite azul "Instale o Campus+" aparece em cima da barra de abas. Toque em <b>Instalar</b> e confirme.<br><br>Se o convite não aparecer, use o caminho manual: menu <b>⋮</b> &rarr; <b>Instalar app</b> (ou <b>Adicionar à tela inicial</b>).</p><div class="confira">✔ Confira: O ícone do Campus+ aparece na tela inicial do celular.</div></div><div class="passo"><h3><span class="num">36</span>Instalar no iPhone<label><input type="checkbox"> feito</label></h3><p>No iPhone, abra o link no <b>Safari</b>. O aviso explicando a instalação aparece. Toque no botão <b>Compartilhar</b> (quadrado com seta para cima) &rarr; role e toque em <b>Adicionar à Tela de Início</b> &rarr; <b>Adicionar</b>. No iPhone, a instalação é sempre manual: a Apple não deixa o site pedir a instalação.</p><div class="confira">✔ Confira: O ícone do Campus+ aparece na tela de início do iPhone.</div></div><div class="passo"><h3><span class="num">37</span>Abrir como app e testar offline<label><input type="checkbox"> feito</label></h3><p>Abra o Campus+ <b>pelo ícone</b> da tela inicial: ele abre sem a barra do navegador, e o selo amarelo <b>modo app</b> aparece no topo. Navegue pelas 4 telas. Agora ligue o <b>modo avião</b>, feche o app e abra de novo pelo ícone. Ele precisa abrir normalmente, mesmo sem internet!</p><div class="confira">✔ Confira: O app abre pelo ícone, mostra o selo "modo app" e funciona no modo avião. Tire um print da tela inicial com o ícone e outro do app aberto.</div></div></section><section class="parte" id="p9"><h2><span class="n">9</span>Atualizar o app depois</h2><p class="lead">Todo app recebe atualizações. No PWA é assim:</p><div class="passo"><h3><span class="num">38</span>Mudar, trocar a versão e reenviar<label><input type="checkbox"> feito</label></h3><p>1. Mude o que quiser (exemplo: troque um prato do cardápio).<br>2. No <code>sw.js</code>, troque <code>'campus-v1'</code> por <code>'campus-v2'</code>. Mudar o sw.js avisa o celular que existe versão nova; a troca do nome joga fora a caixa antiga.<br>3. No GitHub: <b>Add file &rarr; Upload files</b>, arraste os arquivos alterados (incluindo o sw.js) e clique em <b>Commit changes</b>.<br>4. Espere 1 ou 2 minutos, abra o app com internet, feche e abra de novo.</p><div class="confira">✔ Confira: A mudança aparece no app instalado.</div></div></section><section class="parte" id="arquivos"><h2><span class="n">✓</span>Conferir os arquivos completos</h2><p class="lead">Se algo não funcionar, compare o seu arquivo com a versão final abaixo.</p><details class="completo"><summary>📄 index.html completo</summary><div class="code"><button class="copiar" type="button">Copiar</button><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, viewport-fit=cover&quot;&gt;
+  &lt;title&gt;Campus+&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
+  &lt;meta name=&quot;theme-color&quot; content=&quot;#0B8F4D&quot;&gt;
+  &lt;link rel=&quot;icon&quot; href=&quot;icon-192.png&quot;&gt;
+  &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;icon-192.png&quot;&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;Campus+&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header class=&quot;topo&quot;&gt;
+    &lt;p class=&quot;ola&quot;&gt;Olá, SEU NOME 👋&lt;/p&gt;
+    &lt;h1&gt;Campus+ &lt;span class=&quot;selo-app&quot;&gt;modo app&lt;/span&gt;&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section id=&quot;inicio&quot; class=&quot;tela&quot;&gt;
+      &lt;div class=&quot;card destaque&quot;&gt;
+        &lt;p class=&quot;rotulo&quot;&gt;Próxima aula&lt;/p&gt;
+        &lt;h2&gt;Construção de Sites&lt;/h2&gt;
+        &lt;p&gt;🕖 19h00 · Laboratório 2&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;h3 class=&quot;titulo-secao&quot;&gt;Avisos&lt;/h3&gt;
+      &lt;article class=&quot;card aviso&quot;&gt;
+        &lt;span class=&quot;etiqueta&quot;&gt;Hoje&lt;/span&gt;
+        &lt;h4&gt;Entrega do app PWA&lt;/h4&gt;
+        &lt;p&gt;Envie o link do GitHub Pages até as 22h.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;card aviso&quot;&gt;
+        &lt;span class=&quot;etiqueta azul&quot;&gt;Sexta&lt;/span&gt;
+        &lt;h4&gt;Semana de Ciência e Tecnologia&lt;/h4&gt;
+        &lt;p&gt;Inscrições abertas na coordenação.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;horario&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Horário da semana&lt;/h2&gt;
+      &lt;details class=&quot;dia&quot; open&gt;
+        &lt;summary&gt;Segunda&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Construção de Sites&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Banco de Dados&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Terça&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Engenharia de Software&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Inglês Técnico&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Quarta&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Redes de Computadores&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Construção de Sites&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;dia&quot;&gt;
+        &lt;summary&gt;Quinta&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;b&gt;19h00&lt;/b&gt; Segurança da Informação&lt;/li&gt;
+          &lt;li&gt;&lt;b&gt;20h40&lt;/b&gt; Projeto Integrador&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;cardapio&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Cardápio da semana&lt;/h2&gt;
+      &lt;div class=&quot;grade-cardapio&quot;&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍛&lt;/span&gt;&lt;h4&gt;Seg&lt;/h4&gt;&lt;p&gt;Arroz, feijão e frango&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍝&lt;/span&gt;&lt;h4&gt;Ter&lt;/h4&gt;&lt;p&gt;Macarrão à bolonhesa&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🥘&lt;/span&gt;&lt;h4&gt;Qua&lt;/h4&gt;&lt;p&gt;Cuscuz com ovo&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍲&lt;/span&gt;&lt;h4&gt;Qui&lt;/h4&gt;&lt;p&gt;Sopa de legumes&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;card prato&quot;&gt;&lt;span&gt;🍔&lt;/span&gt;&lt;h4&gt;Sex&lt;/h4&gt;&lt;p&gt;Hambúrguer caseiro&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;perfil&quot; class=&quot;tela&quot;&gt;
+      &lt;h2 class=&quot;titulo-tela&quot;&gt;Meu cartão&lt;/h2&gt;
+      &lt;div class=&quot;carteirinha&quot;&gt;
+        &lt;div class=&quot;foto&quot;&gt;🧑‍🎓&lt;/div&gt;
+        &lt;h3&gt;SEU NOME&lt;/h3&gt;
+        &lt;p&gt;Técnico em Informática&lt;/p&gt;
+        &lt;p class=&quot;matricula&quot;&gt;Matrícula 2026.0001&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;nav class=&quot;abas&quot;&gt;
+    &lt;a href=&quot;#inicio&quot;&gt;&lt;span&gt;🏠&lt;/span&gt;Início&lt;/a&gt;
+    &lt;a href=&quot;#horario&quot;&gt;&lt;span&gt;🗓️&lt;/span&gt;Horário&lt;/a&gt;
+    &lt;a href=&quot;#cardapio&quot;&gt;&lt;span&gt;🍽️&lt;/span&gt;Cardápio&lt;/a&gt;
+    &lt;a href=&quot;#perfil&quot;&gt;&lt;span&gt;👤&lt;/span&gt;Perfil&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;div id=&quot;convite&quot; class=&quot;convite&quot; hidden&gt;
+    &lt;p&gt;&lt;b&gt;📲 Instale o Campus+&lt;/b&gt;&lt;br&gt;Abra direto da tela inicial, até sem internet.&lt;/p&gt;
+    &lt;button id=&quot;botao-instalar&quot;&gt;Instalar&lt;/button&gt;
+    &lt;button id=&quot;botao-depois&quot; class=&quot;secundario&quot;&gt;Agora não&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;aviso-ios&quot; class=&quot;convite&quot; hidden&gt;
+    &lt;p&gt;&lt;b&gt;📲 Instale no iPhone:&lt;/b&gt; toque em &lt;b&gt;Compartilhar&lt;/b&gt; (quadrado com seta ⬆️) e depois em &lt;b&gt;Adicionar à Tela de Início&lt;/b&gt;.&lt;/p&gt;
+    &lt;button id=&quot;botao-fechar-ios&quot; class=&quot;secundario&quot;&gt;Entendi&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></details><details class="completo"><summary>🎨 style.css completo</summary><div class="code"><button class="copiar" type="button">Copiar</button><pre>:root {
+  --verde: #0B8F4D;
+  --verde-escuro: #076b39;
+  --azul: #14365C;
+  --amarelo: #FFC93C;
+  --fundo: #f4f6fb;
+  --texto: #1d2433;
+  --cinza: #6b7385;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: &#x27;Segoe UI&#x27;, Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 90px;
+}
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+  color: white;
+  padding: calc(16px + env(safe-area-inset-top)) 20px 18px;
+  border-radius: 0 0 22px 22px;
+}
+
+.ola {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.topo h1 {
+  font-size: 1.7rem;
+}
+
+.selo-app {
+  display: none;
+  font-size: 0.7rem;
+  background: var(--amarelo);
+  color: var(--texto);
+  padding: 2px 8px;
+  border-radius: 20px;
+  vertical-align: middle;
+}
+
+.tela {
+  display: none;
+  padding: 20px;
+  scroll-margin-top: 140px;
+}
+
+.tela:target {
+  display: block;
+}
+
+main:not(:has(.tela:target)) #inicio {
+  display: block;
+}
+
+.titulo-tela {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.titulo-secao {
+  margin: 24px 0 12px;
+  color: var(--cinza);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgba(20, 54, 92, 0.08);
+}
+
+.destaque {
+  background: var(--azul);
+  color: white;
+}
+
+.destaque h2 {
+  font-size: 1.4rem;
+  margin: 4px 0;
+}
+
+.rotulo {
+  color: var(--amarelo);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aviso {
+  margin-bottom: 12px;
+}
+
+.aviso p {
+  color: var(--cinza);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--verde);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.etiqueta.azul {
+  background: var(--azul);
+}
+
+.dia {
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+}
+
+.dia summary {
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dia summary::-webkit-details-marker {
+  display: none;
+}
+
+.dia summary::after {
+  content: &quot;+&quot;;
+  color: var(--verde);
+  font-size: 1.2rem;
+}
+
+.dia[open] summary::after {
+  content: &quot;−&quot;;
+}
+
+.dia ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.dia li {
+  padding: 6px 0;
+  border-top: 1px solid var(--fundo);
+}
+
+.dia b {
+  color: var(--verde);
+  margin-right: 8px;
+}
+
+.grade-cardapio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.prato {
+  text-align: center;
+}
+
+.prato span {
+  font-size: 2.2rem;
+}
+
+.prato p {
+  color: var(--cinza);
+  font-size: 0.9rem;
+}
+
+.carteirinha {
+  background: linear-gradient(135deg, var(--verde), var(--azul));
+  color: white;
+  border-radius: 22px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.foto {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: white;
+  font-size: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matricula {
+  margin-top: 10px;
+  font-family: &#x27;Courier New&#x27;, monospace;
+  opacity: 0.85;
+}
+
+.abas {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  background: white;
+  border-top: 1px solid #e3e6ee;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.abas a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: var(--cinza);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.abas span {
+  display: block;
+  font-size: 1.4rem;
+}
+
+body:has(#inicio:target) .abas a[href=&quot;#inicio&quot;],
+body:has(#horario:target) .abas a[href=&quot;#horario&quot;],
+body:has(#cardapio:target) .abas a[href=&quot;#cardapio&quot;],
+body:has(#perfil:target) .abas a[href=&quot;#perfil&quot;],
+body:not(:has(.tela:target)) .abas a[href=&quot;#inicio&quot;] {
+  color: var(--verde);
+  font-weight: bold;
+}
+
+.convite {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(80px + env(safe-area-inset-bottom));
+  width: calc(100% - 24px);
+  max-width: 456px;
+  background: var(--azul);
+  color: white;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
+.convite[hidden] {
+  display: none;
+}
+
+.convite p {
+  flex: 1 1 100%;
+}
+
+.convite button {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--amarelo);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.convite button.secundario {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (display-mode: standalone) {
+  .selo-app {
+    display: inline-block;
+  }
+}</pre></div></details><details class="completo"><summary>🧾 manifest.json completo</summary><div class="code"><button class="copiar" type="button">Copiar</button><pre>{
+  &quot;name&quot;: &quot;Campus+ · App do Estudante&quot;,
+  &quot;short_name&quot;: &quot;Campus+&quot;,
+  &quot;description&quot;: &quot;Horário, avisos e cardápio do campus no seu celular.&quot;,
+  &quot;start_url&quot;: &quot;./&quot;,
+  &quot;scope&quot;: &quot;./&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;orientation&quot;: &quot;portrait&quot;,
+  &quot;background_color&quot;: &quot;#f4f6fb&quot;,
+  &quot;theme_color&quot;: &quot;#0B8F4D&quot;,
+  &quot;lang&quot;: &quot;pt-BR&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;icon-192.png&quot;,
+      &quot;sizes&quot;: &quot;192x192&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon-512.png&quot;,
+      &quot;sizes&quot;: &quot;512x512&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    },
+    {
+      &quot;src&quot;: &quot;icon-maskable-512.png&quot;,
+      &quot;sizes&quot;: &quot;512x512&quot;,
+      &quot;type&quot;: &quot;image/png&quot;,
+      &quot;purpose&quot;: &quot;maskable&quot;
+    }
+  ]
+}</pre></div></details><details class="completo"><summary>⚙️ sw.js completo</summary><div class="code"><button class="copiar" type="button">Copiar</button><pre>// Nome da caixa (cache). Mude o número quando atualizar o app: v1, v2, v3...
+const VERSAO = &#x27;campus-v1&#x27;;
+
+// Arquivos guardados no celular para o app abrir sem internet
+const ARQUIVOS = [
+  &#x27;./&#x27;,
+  &#x27;./index.html&#x27;,
+  &#x27;./style.css&#x27;,
+  &#x27;./app.js&#x27;,
+  &#x27;./manifest.json&#x27;,
+  &#x27;./icon-192.png&#x27;,
+  &#x27;./icon-512.png&#x27;
+];
+
+// 1. INSTALAÇÃO: baixa e guarda os arquivos da lista
+self.addEventListener(&#x27;install&#x27;, (evento) =&gt; {
+  evento.waitUntil(
+    caches.open(VERSAO).then((cache) =&gt; cache.addAll(ARQUIVOS))
+  );
+  self.skipWaiting();
+});
+
+// 2. ATIVAÇÃO: apaga as caixas de versões antigas
+self.addEventListener(&#x27;activate&#x27;, (evento) =&gt; {
+  evento.waitUntil(
+    caches.keys().then((nomes) =&gt;
+      Promise.all(
+        nomes.filter((nome) =&gt; nome !== VERSAO).map((nome) =&gt; caches.delete(nome))
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// 3. BUSCA: tenta a internet; se não conseguir, usa a cópia guardada
+self.addEventListener(&#x27;fetch&#x27;, (evento) =&gt; {
+  if (evento.request.method !== &#x27;GET&#x27;) return;
+  if (!evento.request.url.startsWith(self.location.origin)) return;
+
+  evento.respondWith(
+    fetch(evento.request)
+      .then((resposta) =&gt; {
+        const copia = resposta.clone();
+        caches.open(VERSAO).then((cache) =&gt; cache.put(evento.request, copia));
+        return resposta;
+      })
+      .catch(() =&gt; caches.match(evento.request))
+  );
+});</pre></div></details><details class="completo"><summary>🟨 app.js completo</summary><div class="code"><button class="copiar" type="button">Copiar</button><pre>// ===== 1. Registrar o service worker =====
+if (&#x27;serviceWorker&#x27; in navigator) {
+  window.addEventListener(&#x27;load&#x27;, () =&gt; {
+    navigator.serviceWorker.register(&#x27;./sw.js&#x27;)
+      .then(() =&gt; console.log(&#x27;✅ Service worker registrado&#x27;))
+      .catch((erro) =&gt; console.log(&#x27;❌ Erro no service worker:&#x27;, erro));
+  });
+}
+
+// ===== 2. Convite de instalação (Android e computador) =====
+let pedidoInstalacao = null;
+const convite = document.querySelector(&#x27;#convite&#x27;);
+
+window.addEventListener(&#x27;beforeinstallprompt&#x27;, (evento) =&gt; {
+  evento.preventDefault();
+  pedidoInstalacao = evento;
+  convite.hidden = false;
+});
+
+document.querySelector(&#x27;#botao-instalar&#x27;).addEventListener(&#x27;click&#x27;, async () =&gt; {
+  convite.hidden = true;
+  if (!pedidoInstalacao) return;
+  pedidoInstalacao.prompt();
+  const escolha = await pedidoInstalacao.userChoice;
+  console.log(&#x27;Resposta:&#x27;, escolha.outcome);
+  pedidoInstalacao = null;
+});
+
+document.querySelector(&#x27;#botao-depois&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  convite.hidden = true;
+});
+
+window.addEventListener(&#x27;appinstalled&#x27;, () =&gt; {
+  convite.hidden = true;
+  console.log(&#x27;🎉 App instalado!&#x27;);
+});
+
+// ===== 3. Aviso para iPhone e iPad =====
+const ehIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const jaInstalado = window.matchMedia(&#x27;(display-mode: standalone)&#x27;).matches || navigator.standalone === true;
+const avisoIOS = document.querySelector(&#x27;#aviso-ios&#x27;);
+
+if (ehIOS &amp;&amp; !jaInstalado) {
+  avisoIOS.hidden = false;
+}
+
+document.querySelector(&#x27;#botao-fechar-ios&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  avisoIOS.hidden = true;
+});</pre></div></details></section><section class="parte" id="entrega"><h2><span class="n">★</span>Entregar ao professor</h2>
+<p class="lead">Envie pelo canal combinado com a turma, trocando o que está em maiúsculas, e anexe os 2 prints.</p>
+<div class="box msg"><div class="code"><button class="copiar" type="button">Copiar</button><pre>Nome: SEU NOME COMPLETO
+Turma: SUA TURMA
+Atividade: App PWA Campus+
+App publicado: https://SEU-USUARIO.github.io/campus-app/
+Repositório: https://github.com/SEU-USUARIO/campus-app
+Anexos: print da tela inicial com o ícone + print do app aberto (com o selo &quot;modo app&quot;)</pre></div></div>
+<div class="box"><b>Checklist de entrega</b><ul class="check"><li><label><input type="checkbox">O link https://SEU-USUARIO.github.io/campus-app/ abre no celular</label></li><li><label><input type="checkbox">F12 → Application → Manifest sem erros de Installability</label></li><li><label><input type="checkbox">Service worker ativo (activated and is running)</label></li><li><label><input type="checkbox">O app foi instalado e aparece com ícone na tela inicial</label></li><li><label><input type="checkbox">Abrindo pelo ícone, aparece o selo &quot;modo app&quot;</label></li><li><label><input type="checkbox">O app abre no modo avião</label></li><li><label><input type="checkbox">Troquei SEU NOME e personalizei o horário</label></li></ul></div>
+<div class="box"><b>Terminou antes? Desafios:</b><ul><li>Transforme o Campus+ em outro produto: app de uma lanchonete, de um time, da sua igreja ou do seu bairro. Mude nome, cores, telas, ícone e manifest.</li><li>Adicione uma 5ª tela (ex.: Notas ou Contatos) e uma 5ª aba.</li><li>Crie um tema escuro com @media (prefers-color-scheme: dark), trocando só as variáveis do :root.</li><li>Pesquise o campo &quot;shortcuts&quot; do manifest e crie um atalho para a tela Horário (aparece ao segurar o ícone no Android).</li></ul></div></section>
+<section class="parte" id="erros"><h2><span class="n">?</span>Deu erro? Veja aqui</h2><div class="box erro"><b>O convite de instalar não aparece no Android</b>Confira, nesta ordem: (1) você está no <b>Chrome</b>? Outros navegadores podem não mostrar; (2) o app <b>já está instalado</b>? Se estiver, o convite não aparece mais. Desinstale para testar de novo; (3) você tocou na página e esperou uns 30 segundos? (4) no computador, F12 &rarr; Application &rarr; Manifest &rarr; Installability mostra algum erro? (5) você clicou em "Agora não" antes? Feche a aba e abra de novo. Se nada resolver, instale pelo menu ⋮ &rarr; Instalar app.</div><div class="box erro"><b>Manifest: &quot;Line 1, column 1, Syntax error&quot; ou o manifest não carrega</b>É erro no JSON: vírgula sobrando depois do último item, aspas simples em vez de duplas ou chave sem fechar. Compare seu arquivo com o bloco do guia, linha por linha.</div><div class="box erro"><b>Erro de ícone no Manifest (&quot;icon... size&quot; ou &quot;could not download&quot;)</b>O nome do arquivo no manifest não bate com o arquivo enviado (ex.: Icon-192.png com maiúscula) ou o PNG não tem o tamanho certo. Gere de novo no Gerador de Ícones.</div><div class="box erro"><b>O service worker não registra (Console: ❌ Erro no service worker)</b>Se você abriu o arquivo direto do computador (endereço file://), é normal: o service worker só funciona em HTTPS ou localhost. Se o erro aparece no site publicado, algum arquivo da lista ARQUIVOS do sw.js não existe no repositório. Confira os 7 nomes.</div><div class="box erro"><b>A página do GitHub Pages dá 404 ou o app abre sem estilo</b>O index.html precisa estar solto na raiz do repositório (não dentro de uma pasta). Espere 2 minutos após ligar o Pages. Sem estilo: confira o nome style.css.</div><div class="box erro"><b>Mudei o código e o app continua igual</b>Troque a VERSAO no sw.js (v2, v3...), reenvie todos os arquivos alterados e abra o app 2 vezes com internet. No computador: F12 &rarr; Application &rarr; Storage &rarr; Clear site data.</div><div class="box erro"><b>O manifest/ícone funciona no PC mas o app instalado abre a página errada</b>Algum caminho começa com <code>/</code> (barra sozinha). No GitHub Pages use sempre <code>./</code> no start_url, no scope e no register do sw.js.</div></section></main><footer class="rod">Construção de Sites 1 · Prof. Eber Santana · IFS Campus Tobias Barreto</footer><script>
+document.querySelectorAll('.copiar').forEach(function(b){b.addEventListener('click',function(){
+ var t=b.parentElement.querySelector('pre').innerText;
+ function ok(){b.textContent='Copiado!';setTimeout(function(){b.textContent='Copiar'},1500)}
+ function fb(){var x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(x)}
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else{fb()}
+})});
+</script></body></html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Ícones PWA</title>
+<style>
+  :root { --verde: #0B8F4D; --azul: #14365C; --fundo: #f4f6fb; --linha: #e3e6ee; --texto: #1d2433; --cinza: #5b6475; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.5; }
+  header { background: var(--azul); color: #fff; padding: 28px 16px; }
+  header div, main { max-width: 860px; margin: 0 auto; }
+  header h1 { font-size: 26px; }
+  header p { opacity: .85; }
+  main { padding: 20px 16px 40px; }
+  .painel { background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 18px; margin-bottom: 16px; }
+  .campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  input[type=text] { width: 100%; font-size: 28px; padding: 6px 10px; border: 2px solid var(--linha); border-radius: 10px; }
+  input[type=color] { width: 100%; height: 50px; border: 2px solid var(--linha); border-radius: 10px; background: #fff; cursor: pointer; }
+  .sugestoes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .sugestoes button { font-size: 22px; background: var(--fundo); border: 1px solid var(--linha); border-radius: 8px; padding: 4px 8px; cursor: pointer; }
+  .icones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .icone { background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 16px; text-align: center; }
+  .icone canvas { width: 140px; height: 140px; background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; border-radius: 8px; }
+  .icone h3 { font-size: 15px; margin-top: 8px; }
+  .icone p { font-size: 13px; color: var(--cinza); min-height: 40px; }
+  .icone a { display: inline-block; margin-top: 8px; background: var(--verde); color: #fff; text-decoration: none; padding: 10px 14px; border-radius: 10px; font-weight: 600; }
+  .dica { font-size: 14px; color: var(--cinza); margin-top: 12px; }
+  code { background: #eef0f6; padding: 1px 6px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<header><div><h1>📱 Gerador de Ícones PWA</h1><p>Escolha um emoji e as cores. Baixe os 3 arquivos e coloque na pasta do seu app.</p></div></header>
+<main>
+  <section class="painel">
+    <div class="campos">
+      <div>
+        <label for="emoji">Emoji ou letras (até 3)</label>
+        <input type="text" id="emoji" value="🎓" maxlength="6">
+        <div class="sugestoes" id="sugestoes"></div>
+      </div>
+      <div>
+        <label for="cor">Cor de fundo</label>
+        <input type="color" id="cor" value="#0B8F4D">
+      </div>
+      <div>
+        <label for="corTexto">Cor das letras (se usar letras)</label>
+        <input type="color" id="corTexto" value="#ffffff">
+      </div>
+    </div>
+  </section>
+
+  <section class="icones">
+    <div class="icone">
+      <canvas id="c192" width="192" height="192"></canvas>
+      <h3>icon-192.png</h3>
+      <p>Ícone pequeno (192 × 192). Tela inicial e aba do navegador.</p>
+      <a id="d192" download="icon-192.png" href="#">⬇ Baixar</a>
+    </div>
+    <div class="icone">
+      <canvas id="c512" width="512" height="512"></canvas>
+      <h3>icon-512.png</h3>
+      <p>Ícone grande (512 × 512). Tela de abertura do app.</p>
+      <a id="d512" download="icon-512.png" href="#">⬇ Baixar</a>
+    </div>
+    <div class="icone">
+      <canvas id="cmask" width="512" height="512"></canvas>
+      <h3>icon-maskable-512.png</h3>
+      <p>Versão com margem. O Android recorta em círculo ou gota sem cortar o desenho.</p>
+      <a id="dmask" download="icon-maskable-512.png" href="#">⬇ Baixar</a>
+    </div>
+  </section>
+  <p class="dica">Os arquivos vão para a pasta <b>Downloads</b>. Mova os 3 para a pasta do app, junto do <code>index.html</code>. Se o navegador colocar <code>(1)</code> no nome, renomeie.</p>
+</main>
+<script>
+  const SUGESTOES = ['🎓', '📚', '🏫', '📱', '🍔', '⚽', '🎮', '🌵', '🚌', '💡', 'C+'];
+  const FONTE = '"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Segoe UI",Roboto,Arial,sans-serif';
+  const campoEmoji = document.querySelector('#emoji');
+  const campoCor = document.querySelector('#cor');
+  const campoCorTexto = document.querySelector('#corTexto');
+
+  function arredondado(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function desenhar(canvas, mascaravel) {
+    const ctx = canvas.getContext('2d');
+    const t = canvas.width;
+    ctx.clearRect(0, 0, t, t);
+    ctx.fillStyle = campoCor.value;
+    if (mascaravel) {
+      ctx.fillRect(0, 0, t, t);
+    } else {
+      arredondado(ctx, 0, 0, t, t, t * 0.22);
+      ctx.fill();
+    }
+    const texto = campoEmoji.value.trim() || '🎓';
+    const escala = mascaravel ? 0.42 : 0.6;
+    let tamanho = t * escala;
+    ctx.font = `bold ${tamanho}px ${FONTE}`;
+    const largura = ctx.measureText(texto).width;
+    if (largura > t * (mascaravel ? 0.6 : 0.8)) {
+      tamanho = tamanho * (t * (mascaravel ? 0.6 : 0.8)) / largura;
+      ctx.font = `bold ${tamanho}px ${FONTE}`;
+    }
+    ctx.fillStyle = campoCorTexto.value;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(texto, t / 2, t / 2 + tamanho * 0.06);
+  }
+
+  function atualizar() {
+    const pares = [['c192', 'd192', false], ['c512', 'd512', false], ['cmask', 'dmask', true]];
+    pares.forEach(([idCanvas, idLink, mascaravel]) => {
+      const canvas = document.getElementById(idCanvas);
+      desenhar(canvas, mascaravel);
+      document.getElementById(idLink).href = canvas.toDataURL('image/png');
+    });
+  }
+
+  const caixa = document.querySelector('#sugestoes');
+  SUGESTOES.forEach((s) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = s;
+    b.addEventListener('click', () => { campoEmoji.value = s; atualizar(); });
+    caixa.appendChild(b);
+  });
+
+  [campoEmoji, campoCor, campoCorTexto].forEach((c) => c.addEventListener('input', atualizar));
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(atualizar); }
+  atualizar();
+</script>
+</body>
+</html>
